@@ -9,12 +9,10 @@ Exercici 1 - Fes una funció anomenada spData, tal que donada una data en format
 MySQL ( AAAA-MM-DD ) ens retorni una cadena de caràcters en format DD-MM-AAAA
 Exemple : SELECT spData('1988-12-01') => 01-12-1988
 ```mysql
-DROP DATABASE IF EXISTS rrhh;
-```mysql
 
-/* Crear la base de dades */
 CREATE DATABASE rrhh;
 
+```
 Exercici 2 - Fes una funció anomenada spPotencia, tal que donada una base i un
 exponent, ens calculi la seva potència. Intenta no utilitzar la funció POW.
 Exemple : SELECT spPotencia(2,3) => 8
