@@ -10,7 +10,39 @@ MySQL ( AAAA-MM-DD ) ens retorni una cadena de caràcters en format DD-MM-AAAA
 Exemple : SELECT spData('1988-12-01') => 01-12-1988
 ```mysql
 
-CREATE DATABASE rrhh;
+DELIMITER //
+
+CREATE FUNCTION spData(pFecha DATE) RETURNS VARCHAR(10)
+BEGIN
+    DECLARE vFecha VARCHAR(10);
+    
+    -- Extracció del dia, mes i any de la data
+    DECLARE vDia VARCHAR(2);
+    DECLARE vMes VARCHAR(2);
+    DECLARE vAny VARCHAR(4);
+    
+    SET vDia = DAY(pFecha);
+    SET vMes = MONTH(pFecha);
+    SET vAny = YEAR(pFecha);
+    
+    -- Ajust de la longitud del dia i mes a 2 caràcters
+    IF LENGTH(vDia) = 1 THEN
+        SET vDia = CONCAT('0', vDia);
+    END IF;
+    
+    IF LENGTH(vMes) = 1 THEN
+        SET vMes = CONCAT('0', vMes);
+    END IF;
+    
+    -- Construcció de la data en format DD-MM-AAAA
+    SET vFecha = CONCAT(vDia, '-', vMes, '-', vAny);
+    
+    RETURN vFecha;
+END //
+
+DELIMITER ;
+
+SELECT spData('1988-2-01');
 
 ```
 Exercici 2 - Fes una funció anomenada spPotencia, tal que donada una base i un
