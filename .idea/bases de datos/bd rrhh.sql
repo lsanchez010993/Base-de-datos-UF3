@@ -198,7 +198,7 @@ INSERT INTO historial_feines VALUES( 176, '1998-03-24', '1998-12-31', 'SA_REP', 
 INSERT INTO historial_feines VALUES( 176, '1999-01-01', '1999-12-31', 'SA_MAN', 80);
 INSERT INTO historial_feines VALUES( 200, '1994-07-01', '1998-12-31', 'AC_ACCOUNT', 90);
 
-
+```mysql
 
 
 
