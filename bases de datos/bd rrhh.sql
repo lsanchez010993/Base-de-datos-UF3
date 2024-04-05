@@ -1,4 +1,4 @@
-´´´mysql
+
 /* Eliminem la base de dades si existeix */
 DROP DATABASE IF EXISTS rrhh;
 
