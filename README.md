@@ -1,4 +1,4 @@
-ACTIVITAT - EXERCICIS SUBPROGRAMES
+#ACTIVITAT - EXERCICIS SUBPROGRAMES
 
 Resol aquests exercicis de l'elaboració de subprogrames mitjançant les BD
 proporcionades durant el curs.
