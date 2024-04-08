@@ -45,6 +45,23 @@ Exercici 2 - Fes una funció anomenada spPotencia, tal que donada una base i un
 exponent, ens calculi la seva potència. Intenta no utilitzar la funció POW.
 Exemple : SELECT spPotencia(2,3) => 8
 
+```mysql
+
+DELIMITER //
+
+CREATE FUNCTION spPotencia(sBase INT, sExponent INT) RETURNS INT
+BEGIN
+    DECLARE vPotencia INT;
+    
+    SET vPotencia = POW(sBase, sExponent);
+    
+    RETURN vPotencia;
+END //
+
+
+```
+
+
 Exercici 3 - Fes una funció anomenada spIncrement que donat un codi d’empleat i un
 % de increment, ens calculi el salari sumant aquest percentatge.
 Per exemple, suposem que l’ empleat amb id_empleat = 124 té un salari de 1000
