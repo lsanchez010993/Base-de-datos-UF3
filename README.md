@@ -63,7 +63,25 @@ Exercici 3 - Fes una funció anomenada spIncrement que donat un codi d’empleat
 % de increment, ens calculi el salari sumant aquest percentatge.
 Per exemple, suposem que l’ empleat amb id_empleat = 124 té un salari de 1000
 Exemple: SELECT spIncrement(124,10) obtindriem -> 1100
+```mysql
+DELIMITER //
+CREATE FUNCTION spIncrement(empleatID INT, porcentaje INT) RETURNS INT
+BEGIN
+    DECLARE salariIncrementat INT;
 
+    SET salariIncrementat = (SELECT salari
+                                FROM empleats
+                                WHERE empleat_id = empleatID) 
+                            * porcentaje/100;
+
+    RETURN salariIncrementat;
+END//
+DELIMITER ;
+
+
+
+SELECT spIncrement (100,20)
+```
 
 
 
