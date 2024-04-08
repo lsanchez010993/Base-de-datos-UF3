@@ -88,7 +88,25 @@ SELECT spIncrement (100,20)
 Exercici 4 - Fes una funció anomenada spPringat, tal que li passem un codi de
 departament, i ens torni el codi d’empleat que guanya menys d’aquell departament.
 
-Nueva prueba
+```mysql
+DROP FUNCTION IF EXISTS pringat;
+DELIMITER //
+CREATE FUNCTION pringat(codiDepartament INT) RETURNS INT
+BEGIN
+    DECLARE idPringat INT;
+
+    SELECT empleat_id INTO idPringat
+    FROM empleats
+    WHERE codiDepartament = departament_id
+    ORDER BY salari ASC
+    LIMIT 1;
+      
+    RETURN idPringat;
+END//
+DELIMITER ;
+SELECT pringat (90)
+
+```
 
 Exercici 5 - Utilitzant la funció spPringat fes una consulta per obtenir de cada
 departament, l’empleat pringat. Mostra el codi i nom del departament, i el codi d’empleat.
