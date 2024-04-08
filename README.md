@@ -111,6 +111,13 @@ SELECT pringat (90)
 Exercici 5 - Utilitzant la funció spPringat fes una consulta per obtenir de cada
 departament, l’empleat pringat. Mostra el codi i nom del departament, i el codi d’empleat.
 
+```mysql
+SELECT DISTINCT d.departament_id, d.nom, pringat(e.departament_id)
+FROM empleats e
+INNER JOIN departaments d ON d.departament_id = e.departament_id;
+
+```
+
 Exercici 6 - Fes una funció anomenada spCategoria, tal que donat un codi d’empleat,
 ens digui en quina categoria professional està. El criteri que volem seguir per determinar
 la categoria professional és en funció dels anys que porta treballant a l’empresa:
