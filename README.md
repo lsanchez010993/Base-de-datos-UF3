@@ -214,3 +214,7 @@ SELECT numCaps()
 ```
 Exercici 10 - Quina instrucció utilitzarem si volem veure el contingut de la funció
 spPringat?
+```mysql
+SHOW CREATE FUNCTION pringat;
+
+```
