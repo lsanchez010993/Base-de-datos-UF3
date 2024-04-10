@@ -191,6 +191,26 @@ SELECT spEdat('1990-05-15') AS edad;
 ```
 
 Exercici 9 - Fes una funció que ens retorni el número de directors (caps) diferents tenim.
+```mysql
+DROP FUNCTION IF EXISTS numCaps;
+DELIMITER //
+CREATE FUNCTION numCaps() RETURNS INT
+BEGIN
+    DECLARE caps INT;
+    SELECT count (departament_id) into caps
+    FROM empleats
+    WHERE departament_id = (SELECT departament_id
+                                FROM departaments
+                                WHERE nom = 'Directiu');
 
+   RETURN caps;
+   END//
+
+DELIMITER ;
+
+SELECT numCaps()
+
+
+```
 Exercici 10 - Quina instrucció utilitzarem si volem veure el contingut de la funció
 spPringat?
