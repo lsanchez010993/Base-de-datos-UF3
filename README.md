@@ -126,6 +126,36 @@ Entre 2 i 10 anys -> Oficial de Segona
 Entre 11 i 20 Anys -> Oficial de Primera
 Més de 20 anys -> Que es jubili!
 
+```mysql
+DROP FUNCTION IF EXISTS spCategoria;
+DELIMITER //
+CREATE FUNCTION spCategoria(codiEmpleat INT) RETURNS VARCHAR(50)
+BEGIN
+    DECLARE anys INT;
+    DECLARE text_categoria VARCHAR(50);
+
+    SELECT TIMESTAMPDIFF(YEAR, data_contractacio, CURRENT_DATE()) INTO anys
+    FROM empleats
+    WHERE empleat_id = codiEmpleat;
+
+    IF anys >= 0 AND anys < 1 THEN
+        SET text_categoria = 'Auxiliar';
+    ELSEIF anys >= 2 AND anys <= 10 THEN
+        SET text_categoria = 'Oficial de Segona';
+    ELSEIF anys >= 11 AND anys <= 20 THEN
+        SET text_categoria = 'Oficial de Primera';
+    ELSE
+        SET text_categoria = 'Que es jubili!';
+    END IF;
+
+    RETURN text_categoria;
+END//
+DELIMITER ;
+ SELECT  spCategoria(empleat_id)
+    FROM empleats
+
+```
+
 Exercici 7 - Fes una consulta utilitzant la funció anterior perquè mostri mostri de cada
 empleat, el codi d’empleat, el nom, els anys treballats i la categoria professional a la que
 pertany.
