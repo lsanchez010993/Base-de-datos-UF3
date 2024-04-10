@@ -159,7 +159,13 @@ DELIMITER ;
 Exercici 7 - Fes una consulta utilitzant la funció anterior perquè mostri mostri de cada
 empleat, el codi d’empleat, el nom, els anys treballats i la categoria professional a la que
 pertany.
+ ```mysql
+ SELECT  empleat_id as codi_empleat, nom, TIMESTAMPDIFF(YEAR, data_contractacio, CURRENT_DATE()) as anys_treballats,
+        spCategoria(empleat_id) as categoria_profesional
+FROM empleats
 
+ 
+ ```
 
 Exercici 8 - Fes una funció anomenada spEdat, tal que donada una data per paràmetre
 ens retorni l'edat d'una persona. Les dates posteriors a la data d'avui han de retornar 0.
