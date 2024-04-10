@@ -169,6 +169,26 @@ FROM empleats
 
 Exercici 8 - Fes una funció anomenada spEdat, tal que donada una data per paràmetre
 ens retorni l'edat d'una persona. Les dates posteriors a la data d'avui han de retornar 0.
+```mysql
+DROP FUNCTION IF EXISTS spEdat;
+DELIMITER //
+CREATE FUNCTION spEdat(data_naix DATE) RETURNS INT
+BEGIN
+    DECLARE anys INT;
+
+    IF data_naix > CURRENT_DATE() THEN
+        SET anys = 0;
+    ELSE
+        SET anys = TIMESTAMPDIFF(YEAR, data_naix, CURRENT_DATE());
+    END IF;
+
+    RETURN anys;
+END//
+DELIMITER ;
+
+SELECT spEdat('1990-05-15') AS edad;
+
+```
 
 Exercici 9 - Fes una funció que ens retorni el número de directors (caps) diferents tenim.
 
