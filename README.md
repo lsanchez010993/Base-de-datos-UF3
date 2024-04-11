@@ -1,9 +1,4 @@
-#ACTIVITAT - EXERCICIS SUBPROGRAMES
-
-Resol aquests exercicis de l'elaboració de subprogrames mitjançant les BD
-proporcionades durant el curs.
-
-ENUNCIATS DE FUNCIONS
+# ENUNCIATS DE FUNCIONS
 
 Exercici 1 - Fes una funció anomenada spData, tal que donada una data en format
 MySQL ( AAAA-MM-DD ) ens retorni una cadena de caràcters en format DD-MM-AAAA
