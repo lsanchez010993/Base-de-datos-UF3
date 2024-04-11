@@ -219,7 +219,7 @@ SHOW CREATE FUNCTION pringat;
 
 ```
 
-ENUNCIATS DE PROCEDIMENTS
+# ENUNCIATS DE PROCEDIMENTS
 NOTA: En cada exercici, indica com ho faries per cridar el procediment.
 
 Exercici 1 - Fes un procediment que permeti obtenir la data i hora del sistema i l’usuari
