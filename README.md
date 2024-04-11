@@ -224,6 +224,18 @@ NOTA: En cada exercici, indica com ho faries per cridar el procediment.
 Exercici 1 - Fes un procediment que permeti obtenir la data i hora del sistema i l’usuari
 actual.
 ```mysql
+DELIMITER //
+DROP PROCEDURE IF EXISTS obtenirDataHora;
+CREATE PROCEDURE obtenirDataHora() 
+BEGIN
+    SELECT NOW() AS 'data i hora',
+    USER() as usuari_actual;
+END//
+DELIMITER ;
+
+
+
+call obtenirDataHora ()
 
 
 
