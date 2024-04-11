@@ -230,38 +230,80 @@ actual.
 ```
 Exercici 2 - Fes un procediment que intercanvii el sou de dos empleats passats per
 paràmetre.
+```mysql
+
+
+
+```
 Exercici 3 - Fes un procediment que donat dos Ids d'empleat assigni el codi de
 departament del primer en el segon.
+```mysql
+
+
+
+```
 Exercici 4 - Fes un procediment que donat dos codis de departament assigni tots els
 empleats del segon en el primer. Un cop executat el procediment el departament que
 correspont en el segon paràmetre ha de quedar desert/sense cap empleat.
+```mysql
+
+
+
+```
 Exercici 5 - Fes un procediment per mostrar un llistat dels empleats. Volem veure el
 id_empleat, nom_empleat, nom_departament i el nom de la localització del departament
+```mysql
+
+
+
+```
 Exercici 6 - Fes un procediment que donat un codi d’empleat, ens doni la informació de
 l’empleat ( agafa la informació que creguis rellevant)
+```mysql
+
+
+
+```
 Exercici 7 - Volem fer un registre dels usuaris que entren al nostre sistema. Per fer-ho
 primer caldrà crear una taula amb dos camps, un per guardar l’usuari i l’altre per guardar
 la data i hora de l’accés.
+```mysql
+
+
+
+```
 Exercici 8 - A continuació feu un procediment sense arguments, de manera que cada
 vegada que el crideu, insereixi en aquesta taula l’usuari actual i la data i hora en que s’ha
 executat el procediment.
+```mysql
+
+
+
+```
 Exercici 9 - Fes un procediment que ens permeti afegir un nou departament però amb la
 següent particularitat: En cas que la localització no existeixi a la taula localitzacions, ens
 posarà un NULL en el camp id_localtizacio de la taula departaments. Al procediment li
 hem de passar el codi de departament, el nom del departament i el codi de la localització.
+```mysql
+
+
+
+```
 Exercici 10 - Fes un procediment que donat un codi d’empleat, ens posi en paràmetres
 de sortida el nom i el cognom. Indica com ho pots fer per comprovar si el procediment et
 funciona.
+```mysql
+
+
+
+```
 Exercici 11 - Fes un procediment que ens permeti modificar el nom i cognom d’un
 empleat.
-Generalitat de Catalunya
-Departament d’Ensenyament
-Sa Palomera Exercicis de
-subprogrames
-MP02. Base de dades
-MP10. Administració de SGBD
-UF3 Llenguatge SQL: DCL i
-extensió procedimental
+```mysql
+
+
+
+```
 Exercici 12 - Crea una taula d’auditoria anomenada logs_usuaris. Aquesta taula la
 utilitzarem per monitoritzar algunes de les accions que fan els usuaris sobre les dades,
 per exemple si actualitzen dades, eliminen registres.
@@ -276,6 +318,11 @@ Fes un procediment amb nom spRegistrarLog que rebrà com a paràmetres el nom de
 taula, l’acció i el valor_pk.
 Aquest procediment només cal que insereixi un registre en la taula logs_usuaris amb les
 dades rebudes, tenint en compte l’usuari actual i la data-hora del sistema.
+```mysql
+
+
+
+```
 Exercici 13 - Fes un procediment que ens permeti eliminar un departament determinat.
 El departament s’ha d’eliminar de la taula departaments. Utilitza a més dins d’aquest
 procediment, el procediment creat anteriorment (spRegistrarLog) per guardar també un
@@ -287,5 +334,15 @@ El departament 300 s’ha d’eliminar de la taula departaments, i a més si fem
 de la taula logs_usuaris, veuriem per exemple el següent:
 uauri data taula accio valor_pk
 root@localhost 2012-04-30 12:34:00 DEPARTAMENTS ELIMINAR 300
+```mysql
+
+
+
+```
 Exercici 14 - Fes un procediment que ens posi en paràmetres de sortida, el número
 d’empleats que tenim, el número de departaments i el número de localitzacions.
+```mysql
+
+
+
+```
