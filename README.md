@@ -240,6 +240,26 @@ Exercici 2 - Fes un procediment que intercanvii el sou de dos empleats passats p
 paràmetre.
 ```mysql
 
+DROP PROCEDURE IF EXISTS intercambiarSueldo;
+DELIMITER //
+CREATE PROCEDURE intercambiarSueldo(IN empleadID1 INT, IN empleadID2 INT) 
+BEGIN
+    DECLARE salariEmpleat1 INT;
+    DECLARE salariEmpleat2 INT;
+    
+    SELECT salari INTO salariEmpleat1 FROM empleats WHERE empleat_id = empleadID1;
+    SELECT salari INTO salariEmpleat2 FROM empleats WHERE empleat_id = empleadID2;
+    
+    UPDATE empleats 
+    SET salari = salariEmpleat2
+    WHERE empleat_id = empleadID1;
+
+    UPDATE empleats 
+    SET salari = salariEmpleat1
+    WHERE empleat_id = empleadID2;
+
+END//
+DELIMITER ;
 
 
 ```
