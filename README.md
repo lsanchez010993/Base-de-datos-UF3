@@ -266,7 +266,27 @@ DELIMITER ;
 Exercici 3 - Fes un procediment que donat dos Ids d'empleat assigni el codi de
 departament del primer en el segon.
 ```mysql
+DROP PROCEDURE IF EXISTS intercambiarDep;
+DELIMITER //
+CREATE PROCEDURE intercambiarDep(IN empleadID1 INT, IN empleadID2 INT) 
+BEGIN
+    DECLARE departamentEmpleat1 INT;
+    DECLARE departamentEmpleat2 INT;
+    
+    SELECT departament_id INTO departamentEmpleat1 FROM empleats WHERE empleat_id = empleadID1;
 
+    
+    UPDATE empleats 
+    SET departament_id = departamentEmpleat1
+    WHERE empleat_id = empleadID2;
+
+END//
+DELIMITER ;
+
+
+
+
+call intercambiarDep (100,103)
 
 
 ```
