@@ -332,7 +332,19 @@ Exercici 6 - Fes un procediment que donat un codi d’empleat, ens doni la infor
 l’empleat ( agafa la informació que creguis rellevant)
 ```mysql
 
+DROP PROCEDURE IF EXISTS mostrarInforEmpleado;
+DELIMITER //
+CREATE PROCEDURE mostrarInforEmpleado(IN empleatID INT) 
+BEGIN
+    
+   SELECT e.empleat_id, e.nom, d.nom, d.localitzacio_id from empleats e
+   INNER JOIN departaments d ON d.departament_id = e.departament_id 
+   WHERE empleatID=e.empleat_id;
 
+END//
+DELIMITER ;
+
+call mostrarInforEmpleado (101);
 
 ```
 Exercici 7 - Volem fer un registre dels usuaris que entren al nostre sistema. Per fer-ho
