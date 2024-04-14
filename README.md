@@ -295,7 +295,19 @@ empleats del segon en el primer. Un cop executat el procediment el departament q
 correspont en el segon paràmetre ha de quedar desert/sense cap empleat.
 ```mysql
 
-Hola
+DROP PROCEDURE IF EXISTS asignarEmpleadosDep;
+DELIMITER //
+CREATE PROCEDURE asignarEmpleadosDep(IN depID1 INT, IN depID2 INT) 
+BEGIN
+    
+   UPDATE empleats 
+   SET departament_id = depID2
+   WHERE departament_id = depID1;
+
+END//
+DELIMITER ;
+
+call asignarEmpleadosDep (90,60);
 
 ```
 Exercici 5 - Fes un procediment per mostrar un llistat dels empleats. Volem veure el
