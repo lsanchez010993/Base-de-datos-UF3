@@ -314,7 +314,18 @@ Exercici 5 - Fes un procediment per mostrar un llistat dels empleats. Volem veur
 id_empleat, nom_empleat, nom_departament i el nom de la localització del departament
 ```mysql
 
+DROP PROCEDURE IF EXISTS listarEmpleados;
+DELIMITER //
+CREATE PROCEDURE listarEmpleados() 
+BEGIN
+    
+   SELECT e.empleat_id, e.nom, d.nom, d.localitzacio_id from empleats e
+   INNER JOIN departaments d ON d.departament_id = e.departament_id; 
 
+END//
+DELIMITER ;
+
+call listarEmpleados ();
 
 ```
 Exercici 6 - Fes un procediment que donat un codi d’empleat, ens doni la informació de
