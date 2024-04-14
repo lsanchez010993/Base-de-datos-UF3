@@ -295,7 +295,7 @@ empleats del segon en el primer. Un cop executat el procediment el departament q
 correspont en el segon paràmetre ha de quedar desert/sense cap empleat.
 ```mysql
 
-
+Hola
 
 ```
 Exercici 5 - Fes un procediment per mostrar un llistat dels empleats. Volem veure el
