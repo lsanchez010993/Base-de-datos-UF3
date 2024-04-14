@@ -388,7 +388,29 @@ posarà un NULL en el camp id_localtizacio de la taula departaments. Al procedim
 hem de passar el codi de departament, el nom del departament i el codi de la localització.
 ```mysql
 
+DROP PROCEDURE IF EXISTS afegirDep;
+DELIMITER //
+CREATE PROCEDURE afegirDep(in codiDep INT, in nomD VARCHAR(30), in localitzacio INT) 
+BEGIN
 
+    IF NOT EXISTS (SELECT departament_id FROM departaments WHERE departament_id = codiDep) THEN
+        IF EXISTS (SELECT localitzacio_id FROM departaments WHERE localitzacio_id = localitzacio) THEN
+            INSERT INTO departaments (departament_id, nom, localitzacio_id)
+            VALUES (codiDep,nomD,localitzacio);
+        ELSE  
+            INSERT INTO departaments (departament_id, nom, localitzacio_id)
+            VALUES (codiDep,nomD,NULL);
+
+        END IF;
+    END IF;
+END//
+DELIMITER ;
+
+
+CALL afegirDep(11, 'Cosas Interesantes', 569);
+
+
+SELECT * FROM departaments
 
 ```
 Exercici 10 - Fes un procediment que donat un codi d’empleat, ens posi en paràmetres
