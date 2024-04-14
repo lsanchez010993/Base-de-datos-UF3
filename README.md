@@ -352,7 +352,26 @@ primer caldrà crear una taula amb dos camps, un per guardar l’usuari i l’al
 la data i hora de l’accés.
 ```mysql
 
+DROP PROCEDURE IF EXISTS registroUsuarios;
+DELIMITER //
+CREATE PROCEDURE registroUsuarios() 
+BEGIN
+    CREATE TABLE IF NOT EXISTS registro (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nomUsuari VARCHAR(50),
+        dataAcces DATETIME
+    );
 
+    INSERT INTO registro (nomUsuari, dataAcces)
+    VALUES (USER(), CURRENT_TIMESTAMP());
+END//
+DELIMITER ;
+
+
+CALL registroUsuarios();
+
+
+SELECT * FROM registro
 
 ```
 Exercici 8 - A continuació feu un procediment sense arguments, de manera que cada
