@@ -379,7 +379,7 @@ vegada que el crideu, insereixi en aquesta taula l’usuari actual i la data i h
 executat el procediment.
 ```mysql
 
-
+CALL registroUsuarios();
 
 ```
 Exercici 9 - Fes un procediment que ens permeti afegir un nou departament però amb la
