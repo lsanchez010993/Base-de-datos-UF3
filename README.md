@@ -470,3 +470,55 @@ d’empleats que tenim, el número de departaments i el número de localitzacion
 
 
 ```
+
+
+# PRUEBA CON CURSORES
+
+CREAR NOMBRES DE USUARIO:
+
+````MYSQL
+
+    ALTER TABLE empleats
+    ADD nombreUsuario VARCHAR(50);
+
+DROP PROCEDURE IF EXISTS crearNomUsuari;
+DELIMITER //
+CREATE PROCEDURE crearNomUsuari()
+BEGIN
+  DECLARE done INT DEFAULT 0;
+  DECLARE nombreEmpleado VARCHAR(50);
+  DECLARE apellido VARCHAR(50);
+  DECLARE nombreUsuario VARCHAR(100); -- Aumenté la longitud para evitar truncamiento
+
+  -- Declaro un cursor para recorrer las filas de la tabla
+  DECLARE cur CURSOR FOR SELECT nom, cognoms FROM empleats;
+  -- Manejo de errores
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+  OPEN cur;
+  
+  read_loop: LOOP
+    FETCH cur INTO nombreEmpleado, apellido;
+    IF done THEN
+      LEAVE read_loop;
+    END IF;
+
+    -- Generar el nombre de usuario
+    SET nombreUsuario = CONCAT(LOWER(SUBSTRING(nombreEmpleado, 1, 1)), '.', LOWER(apellido));
+
+    -- Actualizar el campo nombreUsuario en la fila actual
+    UPDATE empleats
+    SET nombreUsuario = nombreUsuario
+    WHERE nom = nombreEmpleado AND cognoms = apellido;
+  END LOOP;
+
+  CLOSE cur;
+END//
+DELIMITER ;
+
+
+
+
+CALL crearNomUsuari();
+
+```
