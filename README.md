@@ -532,28 +532,79 @@ salaris marcats per el tipus de feina que fa l’empleat.
 
 ```MYSQL
 DROP TRIGGER IF EXISTS trg_salari_empleats;
-DELIMITER //
-CREATE TRIGGER trg_salari_empleats BEFORE UPDATE ON empleats FOR EACH ROW
-BEGIN
-        IF((NEW.salari < (SELECT salari_min FROM feines WHERE feina_codi = NEW.feina_codi)) OR (NEW.salari > (SELECT salari_max FROM feines WHERE feina_codi = NEW.feina_codi))) THEN
-                SET NEW.salari = OLD.salari;
-    END IF;
-END //
-DELIMITER //
-DROP TRIGGER IF EXISTS trg_salari_empleats_Insert;
-CREATE TRIGGER trg_salari_empleats_Insert BEFORE INSERT ON empleats FOR EACH ROW
-BEGIN
-        IF((NEW.salari < (SELECT salari_min FROM feines WHERE feina_codi = NEW.feina_codi)) 
-                OR (NEW.salari > (SELECT salari_max FROM feines WHERE feina_codi = NEW.feina_codi))) THEN
-               -- SET NEW.salari = (SELECT salari_min FROM feines WHERE feina_codi = NEW.feina_codi);
-                SIGNAL SQLSTATE '43000'
-                SET MESSAGE_TEXT = 'El salari introduit no es valit';
-    END IF;
-END //
-DELIMITER ;
 
-INSERT INTO empleats (empleat_id, nom, cognoms,email,salari,feina_codi,data_contractacio)
-VALUES (502,'Pacoo','Paquito','pao1@pacoo.com',100000,'IT_PROG','1999-09-09')
+DELIMITER / /
+
+CREATE TRIGGER trg_salari_empleats BEFORE UPDATE ON 
+empleats FOR EACH ROW 
+BEGIN 
+	IF(
+	    (
+	        NEW.salari < (
+	            SELECT salari_min
+	            FROM feines
+	            WHERE
+	                feina_codi = NEW.feina_codi
+	        )
+	    )
+	    OR (
+	        NEW.salari > (
+	            SELECT salari_max
+	            FROM feines
+	            WHERE
+	                feina_codi = NEW.feina_codi
+	        )
+	    )
+	) THEN
+	SET
+	    NEW.salari = OLD.salari;
+END
+	IF;
+END
+// 
+
+DELIMITER / /
+
+DROP TRIGGER IF EXISTS trg_salari_empleats_Insert;
+
+CREATE TRIGGER trg_salari_empleats_Insert BEFORE INSERT 
+ON empleats FOR EACH ROW 
+BEGIN 
+	IF(
+	    (
+	        NEW.salari < (
+	            SELECT salari_min
+	            FROM feines
+	            WHERE
+	                feina_codi = NEW.feina_codi
+	        )
+	    )
+	    OR (
+	        NEW.salari > (
+	            SELECT salari_max
+	            FROM feines
+	            WHERE
+	                feina_codi = NEW.feina_codi
+	        )
+	    )
+	) THEN
+	SIGNAL SQLSTATE '43000'
+	SET
+	    MESSAGE_TEXT = 'El salari introduit no es valit';
+END
+	IF;
+END
+// 
+
+DELIMITER;
+
+INSERT INTO
+    empleats (
+        empleat_id, nom, cognoms, email, salari, feina_codi, data_contractacio
+    )
+VALUES (
+        5044, 'Pacouo', 'Paquito', 'pao1@paucoo.com', 10000, 'IT_PROG', '1999-09-09'
+    )
 
 
 ```
