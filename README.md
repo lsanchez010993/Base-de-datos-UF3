@@ -476,7 +476,7 @@ d’empleats que tenim, el número de departaments i el número de localitzacion
 
 CREAR NOMBRES DE USUARIO:
 
-````MYSQL
+```MYSQL
 
     ALTER TABLE empleats
     ADD nombreUsuario VARCHAR(50);
@@ -530,7 +530,7 @@ salari_max de la taula feines.
 En definitiva, volem controlar que el salari dels empleats estigui dins dels rangs de
 salaris marcats per el tipus de feina que fa l’empleat.
 
-```mysql
+```MYSQL
 DROP TRIGGER IF EXISTS trg_salari_empleats;
 DELIMITER //
 CREATE TRIGGER trg_salari_empleats BEFORE UPDATE ON empleats FOR EACH ROW
