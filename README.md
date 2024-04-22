@@ -516,12 +516,10 @@ BEGIN
 END//
 DELIMITER ;
 
-
-
-
 CALL crearNomUsuari();
-
 ```
+
+
 # Triggers
 
 Exercici 4: Validació de dades d’entrada
@@ -531,7 +529,6 @@ salari ha de ser un valor dins del rang marcat pels camps salari_min i
 salari_max de la taula feines.
 En definitiva, volem controlar que el salari dels empleats estigui dins dels rangs de
 salaris marcats per el tipus de feina que fa l’empleat.
-
 
 ```mysql
 DROP TRIGGER IF EXISTS trg_salari_empleats;
