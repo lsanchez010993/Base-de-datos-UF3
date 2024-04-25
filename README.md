@@ -608,3 +608,22 @@ VALUES (
 
 
 ```
+# Creacion de usuarios y permisos
+
+```mysql
+-- crear usuario1
+CREATE USER IF NOT EXISTS 'usuari1'@'localhost' IDENTIFIED BY '!Q"W12qw';
+-- darle permisos de INSERT, UPDATE, DELETE, SELECT en todas las tablas de la bd
+GRANT INSERT, UPDATE, DELETE, SELECT ON rrhh.* TO 'usuari1'@'localhost';
+-- crear usuario2
+CREATE USER IF NOT EXISTS 'usuari2'@'localhost' IDENTIFIED BY '!Q"W12qw';
+-- darle permisos de actualizacion en columna salaris de la tabla empleados
+GRANT UPDATE (salari) ON rrhh.empleats TO 'usuari2'@'localhost';
+-- darle permisos para hacer SELECTS en la BD empleats
+GRANT SELECT ON rrhh.* TO 'usuari2'@'localhost';
+-- darle permisos para hacer SELECTS en la BD empleats
+GRANT SELECT ON rrhh.* TO 'usuari1'@'%';
+
+
+
+```
