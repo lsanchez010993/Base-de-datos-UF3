@@ -478,10 +478,7 @@ CREAR NOMBRES DE USUARIO:
 
 ```MYSQL
 
-    ALTER TABLE empleats
-    ADD nombreUsuario VARCHAR(50);
-
-DROP PROCEDURE IF EXISTS crearNomUsuari;
+    DROP PROCEDURE IF EXISTS crearNomUsuari;
 DELIMITER //
 CREATE PROCEDURE crearNomUsuari()
 BEGIN
@@ -497,10 +494,11 @@ BEGIN
 
   OPEN cur;
   
-  read_loop: LOOP
+  -- Utilizando un bucle WHILE en lugar del bucle LOOP
+  WHILE done = 0 DO
     FETCH cur INTO nombreEmpleado, apellido;
     IF done THEN
-      LEAVE read_loop;
+      LEAVE;
     END IF;
 
     -- Generar el nombre de usuario
@@ -510,13 +508,14 @@ BEGIN
     UPDATE empleats
     SET nombreUsuario = nombreUsuario
     WHERE nom = nombreEmpleado AND cognoms = apellido;
-  END LOOP;
+  END WHILE;
 
   CLOSE cur;
 END//
 DELIMITER ;
 
 CALL crearNomUsuari();
+
 ```
 
 
